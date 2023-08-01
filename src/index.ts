@@ -5,7 +5,7 @@ import path from 'path'
 
 const getCommitTimestampList = (filePath: string) => {
   try {
-    return execSync(`git log --format="%s  %at" -- ${filePath}`)
+    return execSync(`git log --follow --format="%s  %at" -- ${filePath}`)
       .toString()
       .split('\n')
       .filter(line => !!line && !line.includes('ignore-commit-date'))
